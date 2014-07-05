@@ -1,0 +1,25 @@
+{
+  "name": "microload",
+  "version": "0.0.1",
+  "description": "A micro async script loader.",
+  "main": "microload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skid/microload.git"
+  },
+  "keywords": [
+    "loader",
+    "javascript",
+    "async",
+    "small"
+  ],
+  "author": "Dusko Jordanovski <jordanovskid@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skid/microload/issues"
+  },
+  "homepage": "https://github.com/skid/microload"
+}
