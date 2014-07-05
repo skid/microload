@@ -11,10 +11,10 @@
   <body>
     <h1>This is a microload demo</h1>
     <p>Open the console. The background should already be pink.</p>
-    <script type="text/javascript">
-      microload('demo/standalone-1.js', 'demo/standalone-2.js', 'demo/stylesheet.css', ['demo/dependency-1.js', 'demo/dependency-2.js', 'demo/dependee.js'], function(){ 
-        console.log("All done!");
-      });
-    </script>
   </body>
+  <script type="text/javascript">
+    microload('demo/standalone-1.js', 'demo/standalone-2.js', 'demo/stylesheet.css', ['demo/dependency-1.js', 'demo/dependency-2.js', 'demo/dependee.js'], function(){ 
+      console.log("All done!");
+    });
+  </script>
 </html>

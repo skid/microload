@@ -1,4 +1,6 @@
 (function(){
   window.dependency1 = true;
-  console.log("Dependency 1 loaded!");
+  var p = document.createElement('p');
+  p.innerHTML = "Dependency 1 loaded!";
+  document.body.appendChild(p);
 })();

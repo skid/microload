@@ -1,3 +1,5 @@
 (function(){
-  console.log("Standalone script 1 loaded!");
+  var p = document.createElement('p');
+  p.innerHTML = "Standalone script 1 loaded!";
+  document.body.appendChild(p);
 })();
