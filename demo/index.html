@@ -10,11 +10,30 @@
   </head>
   <body>
     <h1>This is a microload demo</h1>
-    <p>The background should already be pink and you should see a bunch of statements after this one.</p>
+    <p>The background should already be blue and you should see a bunch of statements after this one.</p>
   </body>
   <script type="text/javascript">
-    microload('standalone-1.js', 'standalone-2.js', 'stylesheet.css', ['dependency-1.js', 'dependency-2.js', 'dependee.js'], function(){ 
-      console.log("All done!");
+    
+    function echo(str){
+      var p = document.createElement('p');
+      p.innerHTML = str;
+      document.body.appendChild(p);
+    }
+
+    microload('standalone-1.js',
+              ['dependency-1.js', 'dependency-2.js', 'dependee-1.js'],
+              'standalone-2.js',
+              ['dependency-1.js', 'dependency-2.js', 'dependee-2.js'], 
+              'stylesheet.css', function(){ 
+
+      echo("Loaded first batch of scripts. Let's wait and load them again.");
+      
+      setTimeout(function(){
+        microload('standalone-1.js', 'dependee-2.js', function(){
+          echo("Second batch of scripts are already loaded. Executing callback only.");
+        });
+      }, 2000);
+      
     });
   </script>
 </html>
