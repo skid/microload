@@ -6,14 +6,14 @@
     <title>Microload</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="microload.js"></script>
+    <script src="../microload.js"></script>
   </head>
   <body>
     <h1>This is a microload demo</h1>
-    <p>Open the console. The background should already be pink.</p>
+    <p>The background should already be pink and you should see a bunch of statements after this one.</p>
   </body>
   <script type="text/javascript">
-    microload('demo/standalone-1.js', 'demo/standalone-2.js', 'demo/stylesheet.css', ['demo/dependency-1.js', 'demo/dependency-2.js', 'demo/dependee.js'], function(){ 
+    microload('standalone-1.js', 'standalone-2.js', 'stylesheet.css', ['dependency-1.js', 'dependency-2.js', 'dependee.js'], function(){ 
       console.log("All done!");
     });
   </script>

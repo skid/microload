@@ -1,4 +1,5 @@
 /**
+ * @preserve
  * Micro async script loader.
  * Puts a function named `microload` in the window namespace.
  * Usage:
@@ -49,7 +50,8 @@
           }
           return;
         }
-        alert("A server error happened."); 
+        // The ready state changed to something else. This is an error.
+        console && console.log("Microload encountered an error.");
       };
 
       loading[src] = [fn];
