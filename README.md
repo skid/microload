@@ -2,6 +2,14 @@
 
 Microload is a very small asynchronous script and stylesheet loader.  
 
+## Demo
+
+Here's microload: http://skid.github.io/microload.html
+
+## Usage
+
+Simple as this:
+
 ```javascript
 microload('dependency_1.js', ['dependee_1.js', 'dependee_2.js', 'mystyles.css'], function(){
   console.log("Scripts Loaded");
@@ -27,7 +35,23 @@ microload(['jquery.js', 'underscore.js'], 'application.js', 'application-depende
 });
 ```
 
-**DO NOT** do the following:
+Microload will not load the same URL twice, but it will execute a callback queued after an already-loaded resource. For instance:
+
+```javascript
+microload('application.js', function(){
+  application.init();
+  
+  // Later ...
+  microload('application.js', function(){
+    // Oops. We load application.js again
+    // This callback will execute immediately since application.js is already loaded.
+  });
+});
+```
+
+#### DO NOT
+
+Don't do the following:
 
 ```javascript
 microload('script-1.js', function(){
