@@ -12,7 +12,7 @@
     if(src in loaded){
       return fn();
     }
-    
+
     if(ext === '.css') {
       script = document.createElement('link');
       script.rel = "stylesheet";
