@@ -49,16 +49,15 @@ microload('application.js', function(){
 });
 ```
 
-#### DO NOT
-
-Don't do the following:
+Microload will also queue callbacks for resources with the same path
 
 ```javascript
 microload('script-1.js', function(){
   // This will wait for script-1.js to load
 });
 microload('script-1.js', function(){
-  // This will be executed BEFORE script-1.js loads
+  // The script-1.js won't be loaded again, but this callback 
+	// will execute once the previous load call returns.
 });
 ```
 

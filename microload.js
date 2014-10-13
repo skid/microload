@@ -5,6 +5,7 @@
 **/
 (function (){
   var loaded = {};
+  var waiting = {};
 
   function load(src, fn){
     var script, ext = src.substr(src.lastIndexOf('.')).split(/\?|\#/)[0];
@@ -12,7 +13,13 @@
     if(src in loaded){
       return fn();
     }
+    
+    if(src in waiting){
+      return waiting[src].push(fn);
+    }
 
+    waiting[src] = [fn];
+    
     if(ext === '.css') {
       script = document.createElement('link');
       script.rel = "stylesheet";
@@ -30,7 +37,11 @@
       if (!script.readyState || (script.readyState === 'complete' || script.readyState === 'loaded')) {
         script.onload = script.onreadystatechange = null;
         loaded[src] = (new Date).getTime();
-        fn();
+        
+        while(fn = waiting[src].shift()){
+          fn();
+        }
+        delete waiting[src];
       }
       else {
         // The ready state changed to something else. This is an error.
@@ -72,4 +83,5 @@
   
   // Expose the scripts functions for later reference
   window.microload.loaded = loaded;
+  window.microload.waiting = waiting;
 })();
